@@ -1,0 +1,24 @@
+name: 'Rollback Checker'
+description: 'Find rollback or revert in commit message'
+author: 'Robson Andrade<robson.andrade@contraktor.com.br'
+
+outputs:
+  event:
+    description: 'Which event was trigged by commit'
+    value: ${{ steps.commit.outputs.event }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: make sure that python is installed
+      uses: actions/setup-pyhton@v2
+      with:
+        pyhton-version: '3.x'
+
+    - name: check commit message
+      shell: bash
+      id: commit
+      runs: |
+        EVENT=`python ${{ github.action_path }}/src/main.py "${{ github.event.head_commit.message }}"`
+
+        echo "::set-output name=event::${EVENT}"
