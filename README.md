@@ -6,10 +6,10 @@ Usage:
 
 ```yaml
 - uses: contraktor-tech/rollback-checker-action@master
-	id: rollback-checker
+  id: rollback-checker
 
 - run: |
-	echo ${{ steps.rollback-checker.outputs.event }}
+  echo ${{ steps.rollback-checker.outputs.event }}
 ```
 
 Outputs:
