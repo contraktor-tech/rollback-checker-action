@@ -11,7 +11,7 @@ runs:
   using: 'composite'
   steps:
     - name: make sure that python is installed
-      uses: actions/setup-pyhton@v2
+      uses: actions/setup-python@v2
       with:
         pyhton-version: '3.x'
 
