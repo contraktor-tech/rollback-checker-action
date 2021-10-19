@@ -18,7 +18,7 @@ runs:
     - name: check commit message
       shell: bash
       id: commit
-      runs: |
+      run: |
         EVENT=`python ${{ github.action_path }}/src/main.py "${{ github.event.head_commit.message }}"`
 
         echo "::set-output name=event::${EVENT}"
